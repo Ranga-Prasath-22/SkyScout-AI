@@ -1,4 +1,4 @@
-# VENA
+# VENA : Vision Enabled Navigation Agent
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![Multi-Modal LLM](https://img.shields.io/badge/Model-Llama%204%20Vision-purple.svg)](https://ai.meta.com/)
