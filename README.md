@@ -1,88 +1,95 @@
-# ✈️ SkyScout AI
+# ✈️ Flight-CUA-Engine
 
-[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
-[![AI Engine](https://img.shields.io/badge/AI-Groq%20Llama%204-purple.svg)](https://groq.com/)
-[![Agent Framework](https://img.shields.io/badge/Agent-Browser--Use-orange.svg)](https://github.com/browser-use/browser-use)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![System](https://img.shields.io/badge/System-Computer%20Use%20Agent-blueviolet.svg)](https://arxiv.org/abs/2406.00000)
+[![Inference](https://img.shields.io/badge/Inference-Groq%20LPU-orange.svg)](https://groq.com/)
+[![Model](https://img.shields.io/badge/LLM-Llama%204%20Foundational-blue.svg)](https://ai.meta.com/)
 
-> **Autonomous Flight Intelligence powered by Next-Gen Generative AI.**
+> **A deterministic Computer Use Agent (CUA) implementing Large Action Model (LAM) paradigms for autonomous DOM manipulation and flight vector optimization.**
 
-## 🚀 Overview
+## ⚡ Technical Abstract
 
-**SkyScout AI** is an intelligent autonomous agent designed to revolutionize how we search for flights. By leveraging the extreme inference speed of **Groq** and the advanced reasoning capabilities of **Llama 4**, this agent autonomously navigates complex web interfaces in real-time to locate the optimal flight parameters for any given itinerary.
+**Flight-CUA-Engine** is a high-throughput autonomous agent framework designed to solve the *dynamic DOM traversal problem* in complex web applications. Unlike traditional scraping heuristics (XPath/CSS selectors) which are brittle to UI mutations, this engine leverages **Multimodal Large Language Models (MLLMs)** to semantically understand portions of the Viewport, allowing for resilient, human-like interaction flows.
 
-Unlike traditional scrapers that break with UI changes, SkyScout AI "sees" and "understands" the web page just like a human, but with the speed and precision of a machine.
+Powered by **Groq's LPU (Language Processing Unit)** hardware, the system achieves sub-second inference latencies, enabling real-time decision loops required for successfully navigating time-sensitive asynchronous UI states.
 
-## ✨ Key Features
+## 🏗️ System Architecture
 
--   **🧠 Cognitive Navigation**: Uses Multimodal LLMs to understand DOM structures and visual context.
--   **⚡ Hper-Fast Inference**: Powered by Groq's LPU (Language Processing Unit) for near-instant decision making.
--   **🛡️ Self-Healing**: Automatically detects and handles pop-ups, dynamic content, and anti-bot measures (via Dockerized browser isolation).
--   **🔌 Plug-and-Play**: Simple architecture designed for easy extensibility to other domains beyond travel.
+The architecture implements a **Perception-Action Loop** utilizing a headless browser containerized via Docker.
+
+```mermaid
+graph TD
+    subgraph "Inference Layer (Groq LPU)"
+        L[Llama 4 Model]
+    end
+
+    subgraph "Execution Layer (Docker)"
+        B[Headless Browser Context]
+        VM[Vision Module]
+        DOM[DOM Tree Parser]
+    end
+
+    subgraph "Control Plane"
+        C[Agent Controller]
+        S[State Manager]
+        H[Heuristics Engine]
+    end
+
+    B -->|Snapshot| VM
+    B -->|Accessibility Tree| DOM
+    VM -->|Visual Embeddings| C
+    DOM -->|Semantic Tokens| C
+    C -->|Context Window| L
+    L -->|Action Token| C
+    C -->|CDP Commands| B
+```
+
+## 🚀 Key Engineering Capabilities
+
+-   **Zero-Shot DOM Navigation**: Navigates previously unseen UI patterns using semantic reasoning rather than hardcoded paths.
+-   **Chain-of-Thought Planning**: Decomposes complex booking queries into atomic browser actions (Click, Type, Scroll, Wait).
+-   **Self-Correction Protocols**: configuration parameters allowing the agent to detect execution failures (e.g., modal interceptions) and replan autonomously.
+-   **High-Concurrency Design**: Asynchronous IO loop optimized for Python 3.11+, capable of handling multiple context streams.
 
 ## 🛠️ Technology Stack
 
--   **Core Logic**: Python 3.11+
--   **Inference Engine**: [Groq API](https://groq.com/) (Llama-4-Scout-17b)
--   **Agentic Framework**: [Browser-Use](https://github.com/browser-use/browser-use) (LangChain integration)
--   **Orchestration**: Docker (Containerized Browser Environment)
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Runtime** | Python 3.11 (AsyncIO) | Core Agent Logic |
+| **Orchestration** | Docker | Browser Environment Isolation |
+| **Inference** | Groq API (Llama-4-Scout) | 30,000+ TPM (Tokens Per Minute) |
+| **Protocol** | Chrome DevTools Protocol (CDP) | Low-level Browser Control |
+| **Framework** | LangChain / Browser-Use | ReAct Paradigm Implementation |
 
-## ⚡ Quick Start
+## 📦 Installation & Deployment
 
 ### Prerequisites
+-   Docker Daemon (running)
+-   Python 3.11+ environment
+-   Groq API Credential
 
--   Python 3.11+
--   Docker Desktop (Running)
--   Groq API Key
+### Setup
 
-### Installation
+```bash
+# Clone the repository
+git clone https://github.com/Ranga-Prasath-22/Flight-CUA-Engine.git
 
-1.  **Clone the Repository**
-    ```bash
-    git clone https://github.com/Ranga-Prasath-22/SkyScout-AI.git
-    cd SkyScout-AI
-    ```
+# Initialize virtual environment
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 
-2.  **Install Dependencies**
-    ```bash
-    pip install -r requirements.txt
-    ```
+# Install dependency graph
+pip install -r requirements.txt
 
-3.  **Configure Environment**
-    Create a `.env` file in the root directory:
-    ```env
-    GROQ_API_KEY=your_groq_api_key_here
-    ```
-
-4.  **Run the Agent**
-    ```bash
-    python main.py
-    ```
-
-## 🏗️ Architecture
-
-```mermaid
-graph LR
-    A[User Request] --> B(SkyScout Agent)
-    B --> C{Llama 4 Logic}
-    C -->|Reasoning| D[Browser Controller]
-    D -->|Action| E[Live Browser Session]
-    E -->|Observation| C
-    E --> F[Flight Data]
-    F --> B
-    B --> G[Final Result]
+# Configure environment variables
+echo "GROQ_API_KEY=your_key_here" > .env
 ```
 
-## 🤝 Contributing
+### Execution
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+```bash
+python main.py
+```
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-<p align="center">
-  Generated with ❤️ by <a href="https://github.com/Ranga-Prasath-22">Ranga Prasath</a>
-</p>
+MIT License.
