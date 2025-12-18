@@ -1,33 +1,26 @@
-# Smart-Flight-Agent
+# VENA
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
-[![Automation](https://img.shields.io/badge/Automation-Playwright-green.svg)](https://playwright.dev/)
-[![AI](https://img.shields.io/badge/AI-LangChain-orange.svg)](https://langchain.com/)
+[![Multi-Modal LLM](https://img.shields.io/badge/Model-Llama%204%20Vision-purple.svg)](https://ai.meta.com/)
+[![Agentic AI](https://img.shields.io/badge/Agent-Autonomous-red.svg)](https://en.wikipedia.org/wiki/Intelligent_agent)
 
-> **A Python-based automation tool that autonomously searches and aggregates flight data using AI.**
+> **Autonomous Web Navigation Agent with Multi-Modal LLM Reasoning**
+
+## 🌐 The Problem
+**Solves**: Traditional web scraping breaks on dynamic Single Page Applications (SPAs).
+**Solution**: VENA uses vision-language models to understand and navigate websites like a human, adapting to changing UIs in real-time.
 
 ## 📋 Overview
 
-**Smart-Flight-Agent** is a practical demonstration of integrating Large Language Models (LLMs) with browser automation. It solves the problem of retrieving flight data from complex, dynamic travel websites that are difficult to scrape with traditional methods (like BeautifulSoup).
-
-By allowing an LLM (Groq Llama 4) to "see" the page structure and control a headless browser, this tool can adapt to changing UI layouts and popup modals without hard-coded selectors.
+**VENA** handles the complexity of the modern web where standard selectors fail. By leveraging **Groq's Llama 4** for high-speed inference, it visually parses DOM structures, handles asynchronous loading states, and interacts with complex elements (modals, dropdowns) autonomously.
 
 ## 🛠️ Tech Stack
-
-I built this project to explore modern automation and AI engineering practices:
 
 *   **Python 3.11**: Core logic and asynchronous execution.
 *   **Playwright**: For reliable, cross-browser automation and rendering.
 *   **LangChain**: To manage the reasoning loop between the agent and the browser.
 *   **Docker**: Containerized the environment to ensure it runs consistently on any machine.
 *   **Groq API**: utilized for high-speed inference to minimize agent latency.
-
-## ⚙️ How It Works
-
-1.  **Input**: The user defines a natural language goal (e.g., "Find the cheapest flight from JFK to LHR").
-2.  **Reasoning**: The agent analyzes the current browser state (DOM).
-3.  **Action**: It determines the next step (Click, Type, Submit) and executes it via Playwright.
-4.  **Extraction**: Once the results page is reached, structured data is parsed and returned.
 
 ## 🚀 Getting Started
 
@@ -58,9 +51,9 @@ python main.py
 
 ## 🤝 Context
 
-This project was built to demonstrate proficiency in:
-*   **Systems Engineering**: connecting distinct components (LLM, Browser, Python).
-*   **Robustness**: Handling errors and unexpected UI states.
-*   **Modern tooling**: Working with Containers and AsyncIO.
+This project demonstrates:
+*   **Vision-Language Navigation**: Crossing the gap between text-based agents and visual interfaces.
+*   **Large Action Models (LAM)**: Implementing agents that *do* things, not just *say* things.
+*   **Resilient Engineering**: Building systems that self-heal against UI updates.
 
 License: MIT
