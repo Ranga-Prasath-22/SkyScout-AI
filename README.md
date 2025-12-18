@@ -1,4 +1,5 @@
-# Vision-Language Agentic System for Autonomous Web Interaction | Multi-Modal Perception + ReAct Decision Framework
+# 👁️VENA: Vision Enabled Navigation Agent
+ Vision-Language Agentic System for Autonomous Web Interaction | Multi-Modal Perception + ReAct Decision Framework
 
 ## 🎯 Executive Summary
 **VENA** is an advanced agentic system that demonstrates the practical application of Large Language Models (LLMs) in web automation. By combining vision-enabled reasoning with browser control primitives, it autonomously navigates complex, JavaScript-heavy websites without brittle CSS selectors or DOM-specific logic.
