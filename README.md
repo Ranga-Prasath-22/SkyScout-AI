@@ -1,95 +1,66 @@
-# ✈️ Flight-CUA-Engine
+# Smart-Flight-Agent
 
-[![System](https://img.shields.io/badge/System-Computer%20Use%20Agent-blueviolet.svg)](https://arxiv.org/abs/2406.00000)
-[![Inference](https://img.shields.io/badge/Inference-Groq%20LPU-orange.svg)](https://groq.com/)
-[![Model](https://img.shields.io/badge/LLM-Llama%204%20Foundational-blue.svg)](https://ai.meta.com/)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+[![Automation](https://img.shields.io/badge/Automation-Playwright-green.svg)](https://playwright.dev/)
+[![AI](https://img.shields.io/badge/AI-LangChain-orange.svg)](https://langchain.com/)
 
-> **A deterministic Computer Use Agent (CUA) implementing Large Action Model (LAM) paradigms for autonomous DOM manipulation and flight vector optimization.**
+> **A Python-based automation tool that autonomously searches and aggregates flight data using AI.**
 
-## ⚡ Technical Abstract
+## 📋 Overview
 
-**Flight-CUA-Engine** is a high-throughput autonomous agent framework designed to solve the *dynamic DOM traversal problem* in complex web applications. Unlike traditional scraping heuristics (XPath/CSS selectors) which are brittle to UI mutations, this engine leverages **Multimodal Large Language Models (MLLMs)** to semantically understand portions of the Viewport, allowing for resilient, human-like interaction flows.
+**Smart-Flight-Agent** is a practical demonstration of integrating Large Language Models (LLMs) with browser automation. It solves the problem of retrieving flight data from complex, dynamic travel websites that are difficult to scrape with traditional methods (like BeautifulSoup).
 
-Powered by **Groq's LPU (Language Processing Unit)** hardware, the system achieves sub-second inference latencies, enabling real-time decision loops required for successfully navigating time-sensitive asynchronous UI states.
+By allowing an LLM (Groq Llama 4) to "see" the page structure and control a headless browser, this tool can adapt to changing UI layouts and popup modals without hard-coded selectors.
 
-## 🏗️ System Architecture
+## 🛠️ Tech Stack
 
-The architecture implements a **Perception-Action Loop** utilizing a headless browser containerized via Docker.
+I built this project to explore modern automation and AI engineering practices:
 
-```mermaid
-graph TD
-    subgraph "Inference Layer (Groq LPU)"
-        L[Llama 4 Model]
-    end
+*   **Python 3.11**: Core logic and asynchronous execution.
+*   **Playwright**: For reliable, cross-browser automation and rendering.
+*   **LangChain**: To manage the reasoning loop between the agent and the browser.
+*   **Docker**: Containerized the environment to ensure it runs consistently on any machine.
+*   **Groq API**: utilized for high-speed inference to minimize agent latency.
 
-    subgraph "Execution Layer (Docker)"
-        B[Headless Browser Context]
-        VM[Vision Module]
-        DOM[DOM Tree Parser]
-    end
+## ⚙️ How It Works
 
-    subgraph "Control Plane"
-        C[Agent Controller]
-        S[State Manager]
-        H[Heuristics Engine]
-    end
+1.  **Input**: The user defines a natural language goal (e.g., "Find the cheapest flight from JFK to LHR").
+2.  **Reasoning**: The agent analyzes the current browser state (DOM).
+3.  **Action**: It determines the next step (Click, Type, Submit) and executes it via Playwright.
+4.  **Extraction**: Once the results page is reached, structured data is parsed and returned.
 
-    B -->|Snapshot| VM
-    B -->|Accessibility Tree| DOM
-    VM -->|Visual Embeddings| C
-    DOM -->|Semantic Tokens| C
-    C -->|Context Window| L
-    L -->|Action Token| C
-    C -->|CDP Commands| B
-```
-
-## 🚀 Key Engineering Capabilities
-
--   **Zero-Shot DOM Navigation**: Navigates previously unseen UI patterns using semantic reasoning rather than hardcoded paths.
--   **Chain-of-Thought Planning**: Decomposes complex booking queries into atomic browser actions (Click, Type, Scroll, Wait).
--   **Self-Correction Protocols**: configuration parameters allowing the agent to detect execution failures (e.g., modal interceptions) and replan autonomously.
--   **High-Concurrency Design**: Asynchronous IO loop optimized for Python 3.11+, capable of handling multiple context streams.
-
-## 🛠️ Technology Stack
-
-| Component | Technology | Role |
-| :--- | :--- | :--- |
-| **Runtime** | Python 3.11 (AsyncIO) | Core Agent Logic |
-| **Orchestration** | Docker | Browser Environment Isolation |
-| **Inference** | Groq API (Llama-4-Scout) | 30,000+ TPM (Tokens Per Minute) |
-| **Protocol** | Chrome DevTools Protocol (CDP) | Low-level Browser Control |
-| **Framework** | LangChain / Browser-Use | ReAct Paradigm Implementation |
-
-## 📦 Installation & Deployment
+## 🚀 Getting Started
 
 ### Prerequisites
--   Docker Daemon (running)
--   Python 3.11+ environment
--   Groq API Credential
+*   Python 3.11+
+*   Docker Desktop (Optional, for containerized run)
+*   Groq API Key
 
-### Setup
+### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/Ranga-Prasath-22/Flight-CUA-Engine.git
+git clone https://github.com/Ranga-Prasath-22/SkyScout-AI.git
 
-# Initialize virtual environment
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-
-# Install dependency graph
+# Install dependencies
 pip install -r requirements.txt
 
-# Configure environment variables
-echo "GROQ_API_KEY=your_key_here" > .env
+# Setup Environment
+# Create a .env file with your API key:
+# GROQ_API_KEY=your_key
 ```
 
-### Execution
+### Usage
 
 ```bash
 python main.py
 ```
 
-## 📄 License
+## 🤝 Context
 
-MIT License.
+This project was built to demonstrate proficiency in:
+*   **Systems Engineering**: connecting distinct components (LLM, Browser, Python).
+*   **Robustness**: Handling errors and unexpected UI states.
+*   **Modern tooling**: Working with Containers and AsyncIO.
+
+License: MIT
