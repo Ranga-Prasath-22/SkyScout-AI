@@ -1,0 +1,4 @@
+browser-use
+langchain-groq
+python-dotenv
+asyncio
