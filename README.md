@@ -1,12 +1,12 @@
-# 👁️VENA: Vision Enabled Navigation Agent
+﻿# ðŸ‘ï¸VENA: Vision Enabled Navigation Agent
  Vision-Language Agentic System for Autonomous Web Interaction | Multi-Modal Perception + ReAct Decision Framework
 
-## 🎯 Executive Summary
+## ðŸŽ¯ Executive Summary
 **VENA** is an advanced agentic system that demonstrates the practical application of Large Language Models (LLMs) in web automation. By combining vision-enabled reasoning with browser control primitives, it autonomously navigates complex, JavaScript-heavy websites without brittle CSS selectors or DOM-specific logic.
 
 This architecture solves a critical challenge in modern web scraping: adapting to dynamic UIs in real-time. Traditional approaches fail when facing popup modals, infinite scroll, or A/B tested layouts. **VENA** leverages multi-modal perception and chain-of-thought reasoning to handle these scenarios gracefully.
 
-## 🏗️ System Architecture
+## ðŸ—ï¸ System Architecture
 
 ```mermaid
 graph TD
@@ -24,14 +24,14 @@ graph TD
     Playwright --> Target[Target Website - Dynamic DOM]
 ```
 
-## 🧠 Technical Deep Dive
+## ðŸ§  Technical Deep Dive
 
 ### Agent Reasoning Pipeline
 The core innovation lies in the **perception-action loop**:
 
 1.  **Multi-Modal Observation**
     *   DOM tree serialization with accessibility hints
-    *   Visual screenshot encoding (Base64 → Vision model)
+    *   Visual screenshot encoding (Base64 â†’ Vision model)
     *   Network request logs for async state detection
 
 2.  **LLM-Powered Decision Making**
@@ -60,7 +60,7 @@ The core innovation lies in the **perception-action loop**:
 | **Active Params** | **17B** | ~1.8T | ~300B |
 | **Context Window** | **10M tokens** | 128K | 200K |
 | **Inference Speed** | **500+ tok/s** | 40 tok/s | 80 tok/s |
-| **Vision Support** | ✅ Native | ✅ Native | ✅ Native |
+| **Vision Support** | âœ… Native | âœ… Native | âœ… Native |
 | **Cost (1M tokens)** | **$0.05** | $10.00 | $15.00 |
 
 **Key Advantage**: 10x lower latency critical for real-time web automation where each action requires LLM inference.
@@ -78,7 +78,7 @@ Modern SPAs present unique challenges:
 *   **Exponential backoff** with jitter for retry logic
 *   **Human-like interaction patterns** (random delays, mouse movements)
 
-## 🔬 Implementation Details
+## ðŸ”¬ Implementation Details
 
 ### Async Architecture
 ```python
@@ -96,7 +96,7 @@ try:
     result = await agent.run()
 except PlaywrightTimeoutError as e:
     logger.error(f"Selector timeout: {e.selector}")
-    # Fallback: Screenshot → Vision model analyzes error state
+    # Fallback: Screenshot â†’ Vision model analyzes error state
 except RateLimitError:
     logger.warning("API quota exceeded, switching to backup model")
     agent.llm = fallback_llm
@@ -115,7 +115,7 @@ CMD ["python", "main.py"]
 *   Isolated dependencies (no version conflicts)
 *   Easy horizontal scaling (spawn multiple containers)
 
-## 🚀 Getting Started
+## ðŸš€ Getting Started
 
 ### Prerequisites
 | Requirement | Version | Purpose |
@@ -153,7 +153,7 @@ echo "GROQ_API_KEY=your_api_key_here" > .env
 python main.py
 
 # Custom task example
-python main.py --task "Find cheapest flight JFK→LHR on Dec 25"
+python main.py --task "Find cheapest flight JFKâ†’LHR on Dec 25"
 ```
 
 ### Docker Deployment
@@ -166,7 +166,7 @@ docker build -t vena .
 docker run --env-file .env vena
 ```
 
-## 📊 Performance Metrics
+## ðŸ“Š Performance Metrics
 *Based on 100 runs against major travel sites:*
 
 | Metric | Value |
@@ -177,14 +177,14 @@ docker run --env-file .env vena
 | **Cost/Run** | $0.0006 |
 | **Error Recovery Rate** | 87% |
 
-## 🔮 Future Enhancements
+## ðŸ”® Future Enhancements
 *   **Parallel Session Management**: Run 10+ agents concurrently
 *   **Memory Layer**: RAG-based learning from past successful runs
 *   **Custom Tool Definitions**: Extend beyond click/type primitives
 *   **Distributed Architecture**: Redis queue + Worker pool
 *   **Visual Regression Testing**: Detect UI changes automatically
 
-## 🎓 Key Learnings & Technical Skills Demonstrated
+## ðŸŽ“ Key Learnings & Technical Skills Demonstrated
 
 ### Systems Design
 *   **Asynchronous Programming**: asyncio, non-blocking I/O patterns
@@ -206,15 +206,39 @@ docker run --env-file .env vena
 *   **Testing**: Mock Playwright, unit tests for utilities
 *   **Documentation**: README-driven development
 
-## 📚 References & Inspiration
+## ðŸ“š References & Inspiration
 *   [LangChain Agent Documentation](https://python.langchain.com/docs/modules/agents/)
 *   [Playwright Best Practices](https://playwright.dev/python/docs/best-practices)
 *   [Groq LPU Architecture](https://groq.com/technology/)
 *   [ReAct: Synergizing Reasoning and Acting in LLMs](https://arxiv.org/abs/2210.03629)
 
-## 📄 License
+## ðŸ“„ License
 MIT License - See LICENSE file for details
 
 ---
-Built with ⚡ by **Ranga Prasath** | [Portfolio](#) | [LinkedIn](#)
+Built with âš¡ by **Ranga Prasath** | [Portfolio](#) | [LinkedIn](#)
 > Demonstrating production-ready AI engineering skills for autonomous systems
+
+## Project Structure
+
+```
+agent/       # LLM + Agent config
+browser/     # Browser setup
+runner.py    # CLI entry point with --task argument
+main.py      # Thin wrapper calling runner
+Dockerfile   # Containerized deployment
+```
+
+## Usage
+
+```bash
+# Default task (Hacker News top 5)
+python runner.py
+
+# Custom task
+python runner.py --task "Find the top 3 trending repos on GitHub today"
+
+# Docker
+docker build -t vena .
+docker run --env-file .env vena
+```
