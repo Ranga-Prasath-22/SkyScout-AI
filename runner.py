@@ -23,9 +23,10 @@ async def run(task=DEFAULT_TASK, headless=True):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="VENA — Vision-Enabled Navigation Agent")
+    parser = argparse.ArgumentParser(description="VENA - Vision-Enabled Navigation Agent")
     parser.add_argument("--task", default=DEFAULT_TASK, help="Natural language task for the agent")
-    parser.add_argument("--headless", action="store_true", default=True, help="Run browser headlessly")
+    parser.add_argument("--no-headless", dest="headless", action="store_false", help="Show browser window")
+    parser.set_defaults(headless=True)
     args = parser.parse_args()
     asyncio.run(run(task=args.task, headless=args.headless))
 
